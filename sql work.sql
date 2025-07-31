@@ -88,6 +88,85 @@ select first_name,salary from employeestable order by  salary;
 select * from employeestable where salary >= 50000 and salary <=70000 order by first_name;
 
 
+-- 31/07/2025
+-- wildcard search
+
+-- 21 to 23.get the name with the given letter in the  position 
+select * from employeestable where first_name like"s%";
+select * from employeestable where first_name like "%i%";
+select * from employeestable where first_name like "%n";
+
+-- Pattern matching 
+
+-- 24. Get employee details from employee table whose first name ends with 'n' and name contains 4 letters
+select * from employeestable where first_name like "____n";
+
+-- 25. Get employee details from employee table whose first name starts with 'J' and name contains 4 letters
+select * from employeestable where first_name like "j____";
+
+-- 26. Get employee details from employee table who’s Salary greater than 60000
+select * from employeestable where salary >60000;
+
+-- 27. Get employee details from employee table who’s Salary less than 80000
+select * from employeestable where salary <80000;
+
+-- 28. Get employee details from employee table who’s Salary between 50000 and 80000
+select * from employeestable where salary >=50000 and  salary <=80000;
+
+-- 29. Get employee details from employee table whose name is venkatesh and ragavi
+select * from employeestable where first_name in("venkatesh","ragavi");
+
+-- SQL DATE Functions
+
+-- 30. Get employee details from employee table whose joining year is “2015”
+select * from employeestable where year(joining_date) ="2015";
+
+-- 31. Get employee details from employee table whose joining month is “January”
+select * from employeestable where month(joining_date)="january";
+
+-- 32. Get employee details from employee table who joined before January 1st 2017
+select * from employeestable where joining_date<"2017-01-01";
+
+-- 33. Get employee details from employee table who joined after January 31st 2016
+select * from employeestable where joining_date>"2016-01-31";
+
+
+-- mathematical function
+
+select sum(salary) from employeestable;
+select avg(salary) from employeestable;
+select count(salary) from employeestable;
+select max(salary) from employeestable;
+select min(salary) from employeestable;
+
+-- get the number of employees in each department
+select department,count(salary) from employeestable group by department;
+
+-- 41. Get department,total salary with respect to a department from employee table.
+select department,sum(salary) from employeestable group by department;
+
+-- 42. Get department,total salary with respect to a department from employee table order by total salary descending
+select department, sum(salary) from employeestable group by department order by sum(salary) desc ;
+
+-- 43. Get department,no of employees in a department,total salary with respect to a department from employee table order by total salary descending
+select department,count(department) from employeestable group by department order by count(salary)desc;
+
+-- 44. Get department wise average salary from employee table order by salary ascending
+select department,avg(salary) from employeestable group by department order by avg(salary) asc;
+
+-- 45. Get department wise maximum salary from employee table order by salary ascending
+select department ,max(salary) from employeestable group by department order by max(salary) asc;
+
+-- 46. Get department wise minimum salary from employee table order by salary ascending
+select department ,min(salary) from employeestable group by department order by min(salary) asc;
+
+-- 47. Select no of employees joined with respect to year and month from employee table
+select joining_date,count(joining_date) from employeestable group by joining_date order by year(joining_date) and month(joining_date);
+
+-- 48. Select department,total salary with respect to a department from employee table where total salary greater than 800000 order by Total_Salary descending
+select department,sum(salary) from employeestable group by department order by sum(salary) >80000 desc;
+
+
 
 
 
